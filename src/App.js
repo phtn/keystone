@@ -1,27 +1,38 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Loadable from 'react-loadable'
-import Paragraph from './assets/paragraph.png'
+import Loading from './components/Loading'
 import Navbar from './components/Navbar'
 import UI from './observables/UI'
 import 'semantic-ui-css/semantic.min.css'
+import './animated.css'
 
 const ui = new UI()
 
 const HomePage = Loadable({
   loader: ()=> import('./components/HomePage'),
-  delay: 300,
-  loading: ()=> <p>loading</p>
+  delay: 200,
+  loading: Loading
 })
 const Blog = Loadable({
   loader: ()=> import('./components/Blog'),
-  delay: 2000,
-  loading: ()=> <img src={Paragraph} alt=''/>
+  delay: 200,
+  loading: Loading
 })
 const News = Loadable({
   loader: ()=> import('./components/News'),
-  delay: 300,
-  loading: ()=> <p>loading</p>
+  delay: 200,
+  loading: Loading
+})
+const Products = Loadable({
+  loader: ()=> import('./components/Products'),
+  delay: 200,
+  loading: Loading
+})
+const About = Loadable({
+  loader: ()=> import('./components/About'),
+  delay: 200,
+  loading: Loading
 })
 class App extends Component {
   componentDidMount(){
@@ -46,6 +57,8 @@ class App extends Component {
             <Route exact path='/' render={()=> <HomePage/>}/>
             <Route path='/blog' render={()=> <Blog/>}/>
             <Route path='/news' render={()=> <News/>}/>
+            <Route path='/products' render={()=> <Products/>}/>
+            <Route path='/about' render={()=> <About/>}/>
           </Switch>
         </div>
       </BrowserRouter>

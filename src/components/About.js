@@ -9,10 +9,10 @@ const styles = {
     fontFamily: 'Varela Round, sans-serif',
     fontWeight: 'bolder',
     textTransform: 'uppercase',
-    color: 'rgb(255, 45, 85)',
+    color: 'rgb(88, 86, 214)',
     letterSpacing: 10
   }
 }
 export default props => (
-  <div className='animated zoomIn' style={styles.container}>News</div>
+  <div className='animated fadeIn' style={styles.container}>About</div>
 )
