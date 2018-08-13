@@ -1,8 +1,10 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import Animate from 'react-move/Animate'
-import { Segment, Card, Icon, Image } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 import UI from '../observables/UI'
+import NewsLetter from './NewsLetter';
+
 const ui = new UI()
 
 // Color.fromARGB(255, 255, 59, 48),
@@ -15,8 +17,8 @@ const ui = new UI()
 // Color.fromARGB(255, 255, 45, 85),
 
 const styles = {
-  container: {
-    margin: '50px 50px',
+  heroContainer: {
+    margin: '20px 20px',
     height: '100%',
   },
   hero: {
@@ -38,7 +40,8 @@ const HomePage = observer(
     }
     render(){
       return (
-        <div style={styles.container}>
+        <div>
+        <div style={styles.heroContainer}>
           <Animate
             start={{
               y: ui.yHero,
@@ -58,6 +61,8 @@ const HomePage = observer(
           )}
           
           </Animate>
+          </div>
+          <NewsLetter/>
         </div>
       )
     }

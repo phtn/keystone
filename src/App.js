@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Loadable from 'react-loadable'
 import Loading from './components/Loading'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+
 import UI from './observables/UI'
 import 'semantic-ui-css/semantic.min.css'
 import './animated.css'
@@ -60,6 +62,7 @@ class App extends Component {
             <Route path='/products' render={()=> <Products/>}/>
             <Route path='/about' render={()=> <About/>}/>
           </Switch>
+          <Footer/>
         </div>
       </BrowserRouter>
       
