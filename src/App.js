@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import UI from './observables/UI'
 import 'semantic-ui-css/semantic.min.css'
 import './animated.css'
+import { observer } from 'mobx-react';
 
 const ui = new UI()
 
@@ -36,38 +37,42 @@ const About = Loadable({
   delay: 200,
   loading: Loading
 })
-class App extends Component {
-  componentDidMount(){
-    window.addEventListener('resize', ()=> {
-      ui.getWidth(window.innerWidth)
-      ui.getHeight(window.innerHeight)
-    })
-  }
-  componentWillUnmount(){
-    window.removeEventListener('resize', ()=> {
-      ui.getWidth(window.innerWidth)
-      ui.getHeight(window.innerHeight)
-    })
-  }
 
-  render() {
-    return (
-      <BrowserRouter>
-        <div>
-          <Navbar/>
-          <Switch>
-            <Route exact path='/' render={()=> <HomePage/>}/>
-            <Route path='/blog' render={()=> <Blog/>}/>
-            <Route path='/news' render={()=> <News/>}/>
-            <Route path='/products' render={()=> <Products/>}/>
-            <Route path='/about' render={()=> <About/>}/>
-          </Switch>
-          <Footer/>
-        </div>
-      </BrowserRouter>
-      
-    );
+const App = observer(
+  class App extends Component {
+    componentDidMount(){
+      window.addEventListener('resize', ()=> {
+        ui.getWidth(window.innerWidth)
+        ui.getHeight(window.innerHeight)
+      })
+    }
+    componentWillUnmount(){
+      window.removeEventListener('resize', ()=> {
+        ui.getWidth(window.innerWidth)
+        ui.getHeight(window.innerHeight)
+      })
+    }
+  
+  
+    render() {
+      return (
+        <BrowserRouter>
+          <div>
+            <Navbar/>
+            <Switch>
+              <Route exact path='/' render={()=> <HomePage sidebarVisibility={ui.sidebarVisible}/>}/>
+              <Route path='/blog' render={()=> <Blog/>}/>
+              <Route path='/news' render={()=> <News/>}/>
+              <Route path='/products' render={()=> <Products/>}/>
+              <Route path='/about' render={()=> <About/>}/>
+            </Switch>
+            <Footer/>
+          </div>
+        </BrowserRouter>
+        
+      );
+    }
   }
-}
+)
 
 export default App;

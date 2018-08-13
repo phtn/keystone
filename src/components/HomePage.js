@@ -35,33 +35,39 @@ const styles = {
 }
 const HomePage = observer(
   class Container extends React.Component {
+    
     componentDidMount(){
       ui.levitateHero()
     }
     render(){
       return (
         <div>
-        <div style={styles.heroContainer}>
-          <Animate
-            start={{
-              y: ui.yHero,
-              z: ui.zHero,
-              h: ui.hHero
-            }}
-            update={{
-              y: [ui.yHero],
-              z: [ui.zHero],
-              h: [ui.hHero],
-              timing: { duration: 300}
-            }}
-          >
-          {({y, z, h})=> (
-            <Segment className='animated fadeIn' style={Object.assign({}, styles.hero, {boxShadow: `rgb(204,204,204) 0px ${y}px ${z}px`, height: h})}>
-            </Segment>
-          )}
-          
-          </Animate>
-          </div>
+
+        
+          <div style={styles.heroContainer}>
+            <Animate
+              start={{
+                y: ui.yHero,
+                z: ui.zHero,
+                h: ui.hHero
+              }}
+              update={{
+                y: [ui.yHero],
+                z: [ui.zHero],
+                h: [ui.hHero],
+                timing: { duration: 300}
+              }}
+            >
+            {({y, z, h})=> (
+              <Segment onClick={p=> ui.toggleSidebar()} className='animated fadeIn' style={Object.assign({}, styles.hero, {boxShadow: `rgb(204,204,204) 0px ${y}px ${z}px`, height: h})}>
+              </Segment>
+            )}
+            
+            </Animate>
+          </div>                
+            
+        
+        
           <NewsLetter/>
         </div>
       )

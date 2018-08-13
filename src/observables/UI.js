@@ -22,6 +22,13 @@ class UI {
         this.yHero = 1
         this.zHero = 2
         this.hHero = 500
+      },
+      sidebarVisible: '',
+      sidebarInit: 'hidden',
+      toggleSidebar(){
+        this.sidebarInit = 'visible'
+        this.sidebarVisible === '' ? this.sidebarVisible = 'animated slideInRight' : this.sidebarVisible === 'animated slideInRight' ? this.sidebarVisible = 'animated fadeOutRight' : this.sidebarVisible = 'animated slideInRight'
+        console.log(this.sidebarVisible)
       }
     })
   }
