@@ -28,7 +28,7 @@ class UI {
       toggleSidebar(){
         this.sidebarInit = 'visible'
         this.sidebarVisible === '' ? this.sidebarVisible = 'animated slideInRight' : this.sidebarVisible === 'animated slideInRight' ? this.sidebarVisible = 'animated fadeOutRight' : this.sidebarVisible = 'animated slideInRight'
-        console.log(this.sidebarVisible)
+        // console.log(this.sidebarVisible)
       }
     })
   }

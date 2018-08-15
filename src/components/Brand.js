@@ -1,19 +1,21 @@
 import React from 'react'
 const styles = {
   container: {
-    // lineHeight: '50px',
-    marginLeft: 10
+    height: 100,
+    paddingLeft: 20,
+    backgroundColor: '#333'
   },
-  brand: {
-    fontFamily: 'Varela Round, sans-serif',
-    fontSize: 20,
-    // fontWeight: 700
-    color: '#eee'
+  title: {
+    fontFamily: 'Cinzel, serif',
+    fontSize: 36,
+    letterSpacing: 2,
+    color: '#eee',
+    lineHeight: '100px'
   }
 }
 export default props => (
   <div style={styles.container}>
-    <h1 style={styles.brand}>
+    <h1 style={styles.title}>
       Keystone Media
     </h1>
   </div>

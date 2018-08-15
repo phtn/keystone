@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Loadable from 'react-loadable'
 import Loading from './components/Loading'
+import Brand from './components/Brand'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
@@ -52,14 +53,13 @@ const App = observer(
         ui.getHeight(window.innerHeight)
       })
     }
-  
-  
     render() {
       return (
         <BrowserRouter>
           <div>
+            <Brand/>
             <Navbar/>
-            <Switch>
+            <Switch >
               <Route exact path='/' render={()=> <HomePage sidebarVisibility={ui.sidebarVisible}/>}/>
               <Route path='/blog' render={()=> <Blog/>}/>
               <Route path='/news' render={()=> <News/>}/>
@@ -69,7 +69,6 @@ const App = observer(
             <Footer/>
           </div>
         </BrowserRouter>
-        
       );
     }
   }
