@@ -18,7 +18,7 @@ const HomePage = observer(
       return (
         <div>
           <Landing/>     
-          <hr/>     
+          <br/>     
           <NewsLetter/>
         </div>
       )

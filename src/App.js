@@ -46,25 +46,37 @@ const App = observer(
         ui.getWidth(window.innerWidth)
         ui.getHeight(window.innerHeight)
       })
+
+      window.addEventListener('scroll', ()=> {
+        if(window.scrollY >= 5){
+          ui.closeSidebar()
+          console.log(ui.sidebarVisible)
+        }
+      })
+
+      console.log(window.location.pathname.replace(/\//g, ''))
     }
     componentWillUnmount(){
       window.removeEventListener('resize', ()=> {
         ui.getWidth(window.innerWidth)
         ui.getHeight(window.innerHeight)
       })
+      window.removeEventListener('scroll', ()=> {
+        // ui.toggleSidebar()
+      })
     }
     render() {
       return (
         <BrowserRouter>
           <div>
-            <Brand/>
+            <Brand title='keystone media'/>
             <Navbar/>
             <Switch >
               <Route exact path='/' render={()=> <HomePage sidebarVisibility={ui.sidebarVisible}/>}/>
-              <Route path='/blog' render={()=> <Blog/>}/>
-              <Route path='/news' render={()=> <News/>}/>
+              <Route path='/earth' render={()=> <Blog height={ui.height - 250}/>}/>
+              <Route path='/news' render={()=> <News height={ui.height - 250}/>}/>
               <Route path='/products' render={()=> <Products/>}/>
-              <Route path='/about' render={()=> <About/>}/>
+              <Route path='/about' render={()=> <About height={ui.height - 250}/>}/>}/>
             </Switch>
             <Footer/>
           </div>

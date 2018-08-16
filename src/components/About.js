@@ -14,5 +14,5 @@ const styles = {
   }
 }
 export default props => (
-  <div className='animated fadeIn' style={styles.container}>About</div>
+  <div className='animated fadeIn' style={Object.assign({}, styles.container, {height: props.height})}>About</div>
 )

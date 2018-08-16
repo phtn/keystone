@@ -11,7 +11,7 @@ class UI {
       getHeight(height){
         this.height = height
       },
-      activeTab: '',
+      activeTab: window.location.pathname !== '/' ? window.location.pathname.replace(/\//g, '') : 'home',
       setActiveTab(name){
         this.activeTab = name
       },
@@ -29,6 +29,9 @@ class UI {
         this.sidebarInit = 'visible'
         this.sidebarVisible === '' ? this.sidebarVisible = 'animated slideInRight' : this.sidebarVisible === 'animated slideInRight' ? this.sidebarVisible = 'animated fadeOutRight' : this.sidebarVisible = 'animated slideInRight'
         // console.log(this.sidebarVisible)
+      },
+      closeSidebar(){
+        this.sidebarVisible = 'animated fadeOutRight'
       }
     })
   }

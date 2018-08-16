@@ -4,7 +4,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 600,
+    
     fontSize: 110,
     fontFamily: 'Varela Round, sans-serif',
     fontWeight: 'bolder',
@@ -14,5 +14,5 @@ const styles = {
   }
 }
 export default props => (
-  <div className='animated zoomIn' style={styles.container}>News</div>
+  <div className='animated zoomIn' style={Object.assign({}, styles.container, {height: props.height})}>News</div>
 )

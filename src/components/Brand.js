@@ -3,11 +3,12 @@ const styles = {
   container: {
     height: 100,
     paddingLeft: 20,
-    backgroundColor: '#333'
+    background: 'linear-gradient(to right, #333, #0083b0)'
   },
   title: {
     fontFamily: 'Cinzel, serif',
-    fontSize: 36,
+    fontSize: 28,
+    fontWeight: 400,
     letterSpacing: 2,
     color: '#eee',
     lineHeight: '100px'
@@ -15,8 +16,8 @@ const styles = {
 }
 export default props => (
   <div style={styles.container}>
-    <h1 style={styles.title}>
-      Keystone Media
+    <h1 style={styles.title} className='animated fadeIn'>
+      {props.title}
     </h1>
   </div>
 )
