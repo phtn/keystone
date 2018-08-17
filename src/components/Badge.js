@@ -10,12 +10,13 @@ const styles = {
     letterSpacing: 2,
     color: '#222',
     textAlign: 'center',
-    borderRadius: 2
+    borderRadius: 2,
+    position: 'relative'
   }
 }
 
 export default props => (
-  <div style={Object.assign({}, styles.container, {width: props.name.length * 15})}>
+  <div style={Object.assign({}, styles.container, {width: props.name.length * 15, left: props.left, top: props.top})}>
     {props.name}
   </div>
 )

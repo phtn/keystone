@@ -54,7 +54,6 @@ const App = observer(
         }
       })
 
-      console.log(window.location.pathname.replace(/\//g, ''))
     }
     componentWillUnmount(){
       window.removeEventListener('resize', ()=> {
@@ -78,7 +77,7 @@ const App = observer(
               <Route path='/products' render={()=> <Products/>}/>
               <Route path='/about' render={()=> <About height={ui.height - 250}/>}/>}/>
             </Switch>
-            <Footer/>
+            {/* <Footer/> */}
           </div>
         </BrowserRouter>
       );

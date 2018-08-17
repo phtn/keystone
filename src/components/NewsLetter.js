@@ -6,6 +6,8 @@ import 'firebase/database'
 import Data from "../observables/Data";
 import { observer } from "mobx-react";
 
+import Badge from './Badge'
+
 const oData = new Data();
 
 const styles = {
@@ -16,7 +18,8 @@ const styles = {
   },
   container: {
     height: 150,
-    width: 310
+    width: 310,
+    margin: 20
   },
   title: {
     height: 50,
@@ -83,11 +86,15 @@ const isEmailSent = (sent) => {
 const NewsLetter = observer( class Container extends React.Component {
   render(){
     return(
+      <div>
+      <Badge name='get latest updates'/>
       <div style={styles.centered}>
+        
         <div style={styles.container}>
           <div style={styles.title}>newsletter</div>
             {isEmailSent(oData.emailSent)}
         </div>
+      </div>
       </div>
     )
   }

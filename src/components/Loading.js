@@ -12,6 +12,7 @@ const styles = {
 export default props => {
   if(props.pastDelay){
     return (
+      <div>
       <div style={styles.container}>
       <Segment>
         <Dimmer active inverted>
@@ -19,6 +20,7 @@ export default props => {
         </Dimmer>
         <Image src={Paragraph} />
       </Segment>
+      </div>
       </div>
     )
   } else {

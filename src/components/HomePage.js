@@ -1,9 +1,10 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { Segment } from 'semantic-ui-react'
+// import { Segment } from 'semantic-ui-react'
 import UI from '../observables/UI'
 import Landing from './Landing'
 import NewsLetter from './NewsLetter';
+import MidOne from './MidOne';
 
 const ui = new UI()
 
@@ -13,12 +14,13 @@ const HomePage = observer(
     
     componentDidMount(){
       ui.levitateHero()
+      console.log(ui.width)
     }
     render(){
       return (
         <div>
-          <Landing/>     
-          <br/>     
+          <Landing/>
+          <MidOne title='Do you need a Water Consulting Specialist?'/> 
           <NewsLetter/>
         </div>
       )

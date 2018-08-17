@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Castle from '../assets/castle_black.svg'
-import { Menu, Responsive, Input, Dropdown, Icon } from 'semantic-ui-react'
+import { Menu, Responsive } from 'semantic-ui-react'
 import UI from '../observables/UI'
 import { observer } from 'mobx-react';
 const ui = new UI()
@@ -20,7 +20,7 @@ const styles = {
   sidebar: {
     position: 'absolute',
     top: 145,
-    width: 150,
+    width: 100,
     backgroundColor: '#333',
     zIndex: 1
   },
@@ -28,7 +28,7 @@ const styles = {
     color: '#222'
   },
   mobileMenu: {
-    width: 150
+    width: '100px !important'
   },
   mobileLinks: {
     color: '#eee'
@@ -62,20 +62,37 @@ const Navbar = observer( class Container extends React.Component {
         </Responsive>
         <Responsive as={Menu} maxWidth={767} pointing secondary>
           <Menu.Item><img src={Castle} height={20} alt=''/></Menu.Item>
-          <Menu.Item style={styles.items}><NavLink to='/' style={styles.links} onClick={()=> ui.setActiveTab('home')}>home</NavLink></Menu.Item>
+          <Menu.Item style={styles.items}>
+            <NavLink 
+              to='/' 
+              style={styles.links} 
+              onClick={()=> {
+                ui.setActiveTab('home')
+                ui.closeSidebar()
+              }}>home
+            </NavLink>
+          </Menu.Item>
+
           <Menu.Item position='right' style={styles.items} onClick={()=> ui.toggleSidebar()} onBlur={()=> ui.toggleSidebar()} as='a'>menu</Menu.Item>
         </Responsive>
-        <div className={ui.sidebarVisible} style={Object.assign({}, styles.sidebar, {left: ui.width - 150, visibility: ui.sidebarInit})}>
+        <div className={ui.sidebarVisible} style={Object.assign({}, styles.sidebar, {left: ui.width-100, visibility: ui.sidebarInit})}>
         <Menu
             inverted
             vertical
-            width='thick'
+            width='thin'
+            icon='labeled'
           >
           {links.map(link=> (
-            <Menu.Item key={links.indexOf(link)} active={ui.activeTab === link}  style={Object.assign({}, styles.items, styles.mobileMenu)}><NavLink to={`/${link}`}  style={styles.mobileLinks} onClick={()=> {
-              ui.setActiveTab(link)
-              ui.toggleSidebar()
-            }}>{link}</NavLink></Menu.Item>  
+            <Menu.Item key={links.indexOf(link)} active={ui.activeTab === link}  style={Object.assign({}, styles.items, styles.mobileMenu)}>
+              <NavLink 
+                to={`/${link}`}  
+                style={styles.mobileLinks}
+                onClick={()=> {
+                  ui.setActiveTab(link)
+                  ui.toggleSidebar()
+                }}>{link}
+              </NavLink>
+            </Menu.Item>  
           ))}
           </Menu>
         </div>
