@@ -1,27 +1,31 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-// import { Segment } from 'semantic-ui-react'
 import UI from '../observables/UI'
 import Landing from './Landing'
 import NewsLetter from './NewsLetter';
 import MidOne from './MidOne';
+import MidTwo from './MidTwo';
+
+
 
 const ui = new UI()
 
-
 const HomePage = observer(
   class Container extends React.Component {
-    
     componentDidMount(){
       ui.levitateHero()
-      console.log(ui.width)
+      window.addEventListener('scroll', ()=> {
+        window.scrollY > 100 ? ui.setNavbarPadding(50) : ui.setNavbarPadding(0)
+      })
     }
     render(){
       return (
         <div>
-          <Landing/>
+          <Landing paddingTop={ui.navbarPadding} fire={this.props.fire} data={this.props.data}/>
           <MidOne title='Do you need a Water Consulting Specialist?'/> 
-          <NewsLetter/>
+          <NewsLetter fire={this.props.fire}/>
+          <MidTwo/>
+          {/* <HeroArticles/> */}
         </div>
       )
     }

@@ -1,6 +1,7 @@
 import React from 'react'
 import Badge from './Badge'
 import Fade from 'react-reveal/Fade'
+import { Grid } from 'semantic-ui-react'
 
 const styles = {
   container: {
@@ -8,7 +9,7 @@ const styles = {
     fontFamily: 'Cinzel, serif',
     fontSize: 24,
     fontWeight: 400,
-    background: 'linear-gradient(to right, #b3ffab, #12fff7)',
+    background: 'linear-gradient(to right, #00d2ff, #3a7bd5)',
     textAlign: 'center',
     borderRadius: 5,
     margin: 20
@@ -31,13 +32,20 @@ const styles = {
   }
 }
 export default props => (
-  <Fade>
-  <Badge name='Get in-touch'/>
-  <div style={styles.container}>
-    <div style={styles.content}>
-    {props.title}
+  <div>
+    <Badge name='mid bar two non-collapsible'/>
+    <div style={styles.container}>
+    <Fade bottom cascade>
+
+      <Grid columns={3}>
+          <Grid.Row stretched>
+            <Grid.Column><Fade top cascade>test</Fade></Grid.Column>
+            <Grid.Column>test</Grid.Column>
+            <Grid.Column>test</Grid.Column>
+          </Grid.Row>
+        
+      </Grid>
+      </Fade>
     </div>
-    <button style={styles.button}>give us a call at 1-800-526-4141</button>
   </div>
-  </Fade>
 )

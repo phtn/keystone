@@ -32,6 +32,15 @@ class UI {
       },
       closeSidebar(){
         this.sidebarVisible = 'animated fadeOutRight'
+      },
+      sticky: 'navbar',
+      getNavbarYOffset(offset){
+        offset === false ? this.sticky = 'navbar' : this.sticky = 'sticky navbar'
+        console.log(this.sticky)
+      },
+      navbarPadding: 0,
+      setNavbarPadding(padding){
+        this.navbarPadding = padding
       }
     })
   }

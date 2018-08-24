@@ -28,7 +28,7 @@ const Copyright = () => (
 )
 export default props => (
   <div>
-  <Badge name='footer'/>
+  <Badge name='Investor Relations'/>
   <div style={styles.container}>
     <Social/>
     <Copyright/>

@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Castle from '../assets/castle_black.svg'
-import { Menu, Responsive } from 'semantic-ui-react'
+import { Menu, Responsive, Sticky } from 'semantic-ui-react'
 import UI from '../observables/UI'
 import { observer } from 'mobx-react';
 const ui = new UI()
-
+ 
 const styles = {
   container: {
     backgroundColor: 'rgb(255, 204, 0)',
@@ -32,7 +32,8 @@ const styles = {
   },
   mobileLinks: {
     color: '#eee'
-  }
+  },
+ 
 }
 const links = ['news', 'health', 'water', 'weather', 'about', ]
 
@@ -41,6 +42,9 @@ const Navbar = observer( class Container extends React.Component {
     window.addEventListener('resize', ()=> {
       ui.getWidth(window.innerWidth)
       ui.getHeight(window.innerHeight)
+    })
+    window.addEventListener('scroll', ()=> {
+      ui.closeSidebar()
     })
   }
   componentWillUnmount(){
@@ -51,8 +55,9 @@ const Navbar = observer( class Container extends React.Component {
   }
   render(){
     return(
-      <div style={styles.container}>
-        <Responsive as={Menu} minWidth={768} pointing secondary>
+      <Sticky>
+      <div style={Object.assign({}, styles.container, {marginBottom: ui.navbarPadding})}>
+        <Responsive as={Menu} minWidth={768} pointing secondary >
           <Menu.Item active={ui.activeTab === 'home'} ><img src={Castle} height={20} alt=''/></Menu.Item>
           <Menu.Item style={styles.items} active={ui.activeTab === 'home'}><NavLink to='/' style={styles.links} onClick={()=> ui.setActiveTab('home')}>home</NavLink></Menu.Item>
           <Menu.Item position='right'></Menu.Item>
@@ -87,6 +92,7 @@ const Navbar = observer( class Container extends React.Component {
               <NavLink 
                 to={`/${link}`}  
                 style={styles.mobileLinks}
+                className='navbarItems'
                 onClick={()=> {
                   ui.setActiveTab(link)
                   ui.toggleSidebar()
@@ -97,6 +103,7 @@ const Navbar = observer( class Container extends React.Component {
           </Menu>
         </div>
       </div>
+      </Sticky>
     )
   }
 })

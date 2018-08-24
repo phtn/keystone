@@ -11,7 +11,8 @@ const styles = {
     fontWeight: 400,
     letterSpacing: 2,
     color: '#eee',
-    lineHeight: '100px'
+    lineHeight: '100px',
+    textShadow: '2px 1px rgba(0,0,0,0.7)'
   }
 }
 export default props => (

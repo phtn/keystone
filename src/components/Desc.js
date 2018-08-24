@@ -25,6 +25,7 @@ const styles = {
 export default props => (
   <div style={Object.assign({}, styles.container)}>
     <h1>{props.name}</h1>
+    <h4>{props.desc}</h4>
   </div>
 )
   
